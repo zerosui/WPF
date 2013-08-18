@@ -1,0 +1,21 @@
+﻿<Window x:Class="SmokeNote.Client.Views.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:SmokeNote.Client.Controls"
+        Style="{DynamicResource NormalWindowStyle}"
+        WindowStartupLocation="CenterScreen"
+        Title="个人记账软件V1.0" Height="230" Width="400" Icon="/SmokeNote.Client;component/SmokeNote.ico" >
+
+    <Grid Margin="0,0,0,0" KeyDown="Grid_KeyDown">
+            <TextBlock  HorizontalAlignment="Left" Margin="97,38,0,0" Name="textBlock1" Text="账户:" VerticalAlignment="Top"  FontStretch="Normal" FontSize="12" />
+            <TextBlock  HorizontalAlignment="Left" Margin="97,80,0,0" Name="textBlock2" Text="口令:" VerticalAlignment="Top" FontStretch="Normal" FontSize="12" />
+        <TextBox Height="23" Margin="168,33,88,0" Name="textBox1" VerticalAlignment="Top" Width="120" />
+        <PasswordBox Height="23"  Margin="168,74,88,0" Name="passwordBox1" VerticalAlignment="Top" Width="120"/>
+        <Button Content="登陆"  HorizontalAlignment="Left" Margin="109,124,0,0" Name="button1" VerticalAlignment="Top" Width="75" Click="button1_Click"  FontStretch="Normal" FontSize="12"/>
+            <Button Content="注册"  HorizontalAlignment="Left" Margin="213,124,0,0" Name="button2" VerticalAlignment="Top" Width="75"  FontStretch="Normal" FontSize="12" Click="button2_Click" />
+           
+            <TextBlock Margin="40,137,24,19" Width="55"  FontStretch="Normal" FontSize="12" HorizontalAlignment="Right">
+            <Hyperlink Click="Hyperlink_Click">忘记密码？</Hyperlink>
+            </TextBlock>
+    </Grid>
+</Window>

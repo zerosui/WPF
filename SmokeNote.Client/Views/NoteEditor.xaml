@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="SmokeNote.Client.Views.NoteEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:controls="clr-namespace:SmokeNote.Client.Controls"
+             mc:Ignorable="d" Name="ucNoteEditor"
+             d:DesignHeight="300" d:DesignWidth="300" DataContextChanged="NoteEditor_DataContextChanged" IsEnabled="{Binding Note.IsDelete, Converter={StaticResource OppositeConverter}}">
+    <UserControl.Resources>
+        <Style TargetType="Rectangle" x:Key="VerticalSeparator">
+            <Setter Property="Width" Value="1"/>
+            <Setter Property="Fill" Value="{StaticResource DefaultBorderBrush}"/>
+            <Setter Property="Height" Value="16"/>
+            <Setter Property="Opacity" Value="0.5"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Rectangle" x:Key="HorizontalSeparator">
+            <Setter Property="Height" Value="1"/>
+            <Setter Property="Fill" Value="{StaticResource DefaultBorderBrush}"/>
+            <Setter Property="Opacity" Value="0.5"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+        </Style>
+        
+        <Style TargetType="FrameworkElement" x:Key="DisplayText">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid Name="grdNoNote" Visibility="Collapsed">
+            <Image Source="/SmokeNote.Client;component/Assets/Images/EditorIcon.png" Width="128" Height="128"/>
+        </Grid>
+        
+        <Grid Name="grdEditor"> 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBox BorderThickness="0" Padding="5,0,5,0" MaxLength="200" Text="{Binding Title}"/>
+
+                <Button Command="{Binding ShowNoteHistoryCommand}" Grid.Column="1" Style="{StaticResource ShowHistoryButton}" Margin="2,0,0,0"/>
+
+                <ToggleButton Grid.Column="2" Style="{StaticResource ShowPropertyButton}" Margin="2,0,2,0"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="创建时间:" Style="{StaticResource DisplayText}"/>
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Note.CreateDate, StringFormat=yyyy/MM/dd HH:mm}"/>
+                <Rectangle Grid.Column="1" Style="{StaticResource VerticalSeparator}"/>
+
+                <TextBlock Grid.Column="2" Text="修改时间:" Style="{StaticResource DisplayText}"/>
+                <TextBlock Grid.Column="3" VerticalAlignment="Center" Margin="10,0,0,0"  Text="{Binding Note.ModifyDate, StringFormat=yyyy/MM/dd HH:mm}"/>
+                <Rectangle Grid.Column="3" Style="{StaticResource VerticalSeparator}"/>
+
+                <Rectangle Grid.ColumnSpan="6" Style="{StaticResource HorizontalSeparator}"/>
+
+                <TextBlock Grid.Column="4" Text="字数:" Style="{StaticResource DisplayText}"/>
+                <TextBlock Grid.Column="5" VerticalAlignment="Center" Margin="10,0,0,0"  Text="1432"/>
+
+                <TextBlock Grid.Row="1" Text="作者:" Style="{StaticResource DisplayText}"/>
+                <xceed:WatermarkTextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="10,0,2,0" Text="{Binding Author}" Style="{StaticResource LikeLabelTextBox}" Watermark="点击编辑作者..."/>
+                <Rectangle Grid.Row="1" Grid.Column="1" Style="{StaticResource VerticalSeparator}"/>
+
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="来源:" Style="{StaticResource DisplayText}"/>
+                <xceed:WatermarkTextBox Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" Margin="10,0,2,0" Text="{Binding From}" Style="{StaticResource LikeLabelTextBox}" Watermark="点击添加来源..." />
+
+                <Rectangle Grid.Row="1" Grid.ColumnSpan="6" Style="{StaticResource HorizontalSeparator}"/>
+                
+                <TextBlock Grid.Row="2" Text="标签:" Style="{StaticResource DisplayText}"/>
+
+                <Rectangle Grid.Row="2" Grid.ColumnSpan="6" Style="{StaticResource HorizontalSeparator}"/>
+
+                <TextBlock Grid.Row="3" Text="推荐标签:" Style="{StaticResource DisplayText}"/>
+
+                <Rectangle Grid.Row="3" Grid.ColumnSpan="6" Style="{StaticResource HorizontalSeparator}"/>
+
+            </Grid>
+
+            <controls:RichTextEditor Text="{Binding Content, Mode=TwoWay}" Grid.Row="2"/>
+        </Grid>
+    </Grid>   
+    
+</UserControl>

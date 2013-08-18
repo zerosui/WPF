@@ -1,0 +1,78 @@
+﻿<Window x:Class="SmokeNote.Client.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        xmlns:controls="clr-namespace:SmokeNote.Client.Controls"
+        xmlns:views="clr-namespace:SmokeNote.Client.Views"
+        xmlns:ViewModels="clr-namespace:SmokeNote.Client.ViewModels"
+        Style="{DynamicResource NormalWindowStyle}" Icon="/SmokeNote.Client;component/SmokeNote.ico"
+        Title="个人记账软件V1.0" Height="600" Width="800">
+    
+    <Window.Tag>
+        <Menu Style="{DynamicResource WindowMenuStyle}">
+            <MenuItem Header="账目操作">
+                <MenuItem Header="新建账目" Name="miConfig" Click="miConfig_Click" />
+            </MenuItem>
+            <MenuItem Header="账目管理">
+                <MenuItem Header="账目管理" Name="MgConfig"  Click="MgConfig_Click"></MenuItem>
+                <Separator Style="{StaticResource DefaultSeparatorStyle}"/>
+                <MenuItem Header="账目清单" Click="MaConfig_Click" />
+            </MenuItem>
+            <MenuItem Header="系统管理">
+                <MenuItem Header="密码修改" Name="UpdatePass" Click="UpdatePass_Click"></MenuItem>
+                <Separator Style="{StaticResource DefaultSeparatorStyle}"/>
+                <MenuItem Header="帮助" Name="Help" Click="Help_Click" />
+            </MenuItem>
+        </Menu>
+    </Window.Tag>
+    <Grid Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="{StaticResource DefaultBorderBrush}" BorderThickness="0,0,0,1" Background="#FFFCFCFC">
+            <Menu Style="{StaticResource TopMenuStyle}">
+                <controls:TopMenuItem Header="新建账目" Click="miConfig_Click"  IconHoverSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/New_Hover.png" IconDisabledSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/New_Disabled.png" IconPressedSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/New_Pressed.png" IconSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/New.png">
+                    <controls:TopMenuItem.Icon>
+                        <Image Source="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/New.png" />
+                    </controls:TopMenuItem.Icon>
+                </controls:TopMenuItem>
+                <controls:TopMenuItem Header="账目管理" Click="MgConfig_Click"
+                                                IconHoverSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Share_Hover.png" IconDisabledSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Share_Disabled.png" IconPressedSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Share_Pressed.png" IconSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Share.png"/>
+                <controls:TopMenuItem Header="账目清单" Click="MaConfig_Click"
+                        IconHoverSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Count_Hover.png" IconDisabledSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Count_Disabled.png" IconPressedSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Count_Pressed.png" IconSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Count.png"/>
+                <controls:TopMenuItem Header="密码修改" Click="UpdatePass_Click"
+                        IconHoverSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Sync_Hover.png" IconDisabledSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Sync_Disabled.png" IconPressedSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Sync_Pressed.png" IconSource="/SmokeNote.Client;component/Assets/Images/Menu/TopMenu/Sync.png"/>
+            </Menu>
+        </Border>
+        <Grid Grid.Row="1" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="14*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid VerticalAlignment="Top" ShowGridLines="True" Grid.Column="0"  Background="#FF4B9FD8" >
+                <TextBlock x:Name="AccountName" Text="当前账户:" Foreground="White" FontWeight="Light" Padding="15,45,0,0"   FontSize="15" TextAlignment="Center" TextWrapping="NoWrap" TextTrimming="None">
+                </TextBlock>
+                <TextBlock x:Name="AccountBalance" Text="账户余额:" Foreground="White" FontWeight="Light" Padding="15,105,0,0"  FontSize="15" TextAlignment="Center" TextWrapping="NoWrap" TextTrimming="None">
+                </TextBlock>
+                <controls:TimeClock x:Name="test" Margin="0,169,0,0" />
+            </Grid>
+            <StackPanel Margin="0,323,0,0" Background="#FF4B9FD8" Height="440">
+            </StackPanel>
+            <GridSplitter Grid.Column="1" Grid.RowSpan="3" Background="#E0EEEE"  VerticalAlignment="Stretch" Width="5" ResizeBehavior="PreviousAndNext" />
+            <Grid VerticalAlignment="Top" ShowGridLines="True" Grid.Column="2" >
+                <DockPanel x:Name="ChildrenWinContent" HorizontalAlignment="Stretch" 
+                Width="Auto">
+                </DockPanel>
+            </Grid>
+            <Calendar Height="170" HorizontalAlignment="Center" Margin="0,353,0,0" Name="calendar1" VerticalAlignment="Top" Width="180" />
+        </Grid>
+        <Grid Grid.Row="2" Background="#FF4B9FD8" >
+            <TextBlock x:Name="Status"  VerticalAlignment="Stretch" Text="个人记账软件V1.0状态栏"  Foreground="White" FontWeight="Light" FontSize="12" TextAlignment="Center" >
+            </TextBlock>
+        </Grid>
+    </Grid>
+</Window>

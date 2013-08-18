@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="financepersonalModel.Store" Alias="Self" Provider="Devart.Data.MySql" ProviderManifestToken="MySQL, 5.0.22" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="financepersonalModelStoreContainer">
+          <EntitySet Name="acount" EntityType="financepersonalModel.Store.acount" store:Type="Tables" Schema="financepersonal" />
+          <EntitySet Name="action" EntityType="financepersonalModel.Store.action" store:Type="Tables" Schema="financepersonal" />
+          <EntitySet Name="role" EntityType="financepersonalModel.Store.role" store:Type="Tables" Schema="financepersonal" />
+          <EntitySet Name="user" EntityType="financepersonalModel.Store.user" store:Type="Tables" Schema="financepersonal" />
+        </EntityContainer>
+        <EntityType Name="acount">
+          <Key>
+            <PropertyRef Name="AcountId" />
+          </Key>
+          <Property Name="AcountId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AcountUserId" Type="varchar" MaxLength="127" />
+          <Property Name="AcountTotal" Type="varchar" MaxLength="127" />
+          <Property Name="AcountDefine1" Type="varchar" MaxLength="127" />
+          <Property Name="AcountDefine2" Type="varchar" MaxLength="127" />
+          <Property Name="AcountDefine3" Type="varchar" MaxLength="127" />
+        </EntityType>
+        <EntityType Name="action">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="ActionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ActionCountId" Type="int" />
+          <Property Name="ActionUserId" Type="int" />
+          <Property Name="ActionName" Type="varchar" MaxLength="127" />
+          <Property Name="ActionMoney" Type="varchar" MaxLength="127" />
+          <Property Name="ActionRole" Type="varchar" MaxLength="127" />
+          <Property Name="ActionCommet" Type="mediumtext" />
+          <Property Name="ActionTime" Type="datetime" />
+          <Property Name="ActionDefine1" Type="varchar" MaxLength="127" />
+          <Property Name="ActionDefine2" Type="varchar" MaxLength="127" />
+          <Property Name="ActionDefine3" Type="varchar" MaxLength="127" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="varchar" MaxLength="127" />
+          <Property Name="RoleAttr" Type="varchar" MaxLength="127" />
+          <Property Name="RoleDefine1" Type="varchar" MaxLength="127" />
+          <Property Name="RoleDefine2" Type="varchar" MaxLength="127" />
+          <Property Name="RoleDefine3" Type="varchar" MaxLength="127" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" MaxLength="127" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="127" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="127" />
+          <Property Name="Define1" Type="varchar" MaxLength="127" />
+          <Property Name="Define2" Type="varchar" MaxLength="127" />
+          <Property Name="Define3" Type="varchar" MaxLength="127" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="financepersonalModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="financepersonalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="acount" EntityType="financepersonalModel.acount" />
+          <EntitySet Name="action" EntityType="financepersonalModel.action" />
+          <EntitySet Name="role" EntityType="financepersonalModel.role" />
+          <EntitySet Name="user" EntityType="financepersonalModel.user" />
+        </EntityContainer>
+        <EntityType Name="acount">
+          <Key>
+            <PropertyRef Name="AcountId" />
+          </Key>
+          <Property Name="AcountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcountUserId" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="AcountTotal" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="AcountDefine1" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="AcountDefine2" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="AcountDefine3" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="action">
+          <Key>
+            <PropertyRef Name="ActionId" />
+          </Key>
+          <Property Name="ActionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ActionCountId" Type="Int32" />
+          <Property Name="ActionUserId" Type="Int32" />
+          <Property Name="ActionName" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="ActionMoney" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="ActionRole" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="ActionCommet" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ActionTime" Type="DateTime" />
+          <Property Name="ActionDefine1" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="ActionDefine2" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="ActionDefine3" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="RoleAttr" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="RoleDefine1" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="RoleDefine2" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="RoleDefine3" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="Define1" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="Define2" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+          <Property Name="Define3" Type="String" MaxLength="127" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="financepersonalModelStoreContainer" CdmEntityContainer="financepersonalEntities">
+          <EntitySetMapping Name="acount"><EntityTypeMapping TypeName="financepersonalModel.acount"><MappingFragment StoreEntitySet="acount">
+            <ScalarProperty Name="AcountId" ColumnName="AcountId" />
+            <ScalarProperty Name="AcountUserId" ColumnName="AcountUserId" />
+            <ScalarProperty Name="AcountTotal" ColumnName="AcountTotal" />
+            <ScalarProperty Name="AcountDefine1" ColumnName="AcountDefine1" />
+            <ScalarProperty Name="AcountDefine2" ColumnName="AcountDefine2" />
+            <ScalarProperty Name="AcountDefine3" ColumnName="AcountDefine3" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="action"><EntityTypeMapping TypeName="financepersonalModel.action"><MappingFragment StoreEntitySet="action">
+            <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+            <ScalarProperty Name="ActionCountId" ColumnName="ActionCountId" />
+            <ScalarProperty Name="ActionUserId" ColumnName="ActionUserId" />
+            <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+            <ScalarProperty Name="ActionMoney" ColumnName="ActionMoney" />
+            <ScalarProperty Name="ActionRole" ColumnName="ActionRole" />
+            <ScalarProperty Name="ActionCommet" ColumnName="ActionCommet" />
+            <ScalarProperty Name="ActionTime" ColumnName="ActionTime" />
+            <ScalarProperty Name="ActionDefine1" ColumnName="ActionDefine1" />
+            <ScalarProperty Name="ActionDefine2" ColumnName="ActionDefine2" />
+            <ScalarProperty Name="ActionDefine3" ColumnName="ActionDefine3" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="role"><EntityTypeMapping TypeName="financepersonalModel.role"><MappingFragment StoreEntitySet="role">
+            <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+            <ScalarProperty Name="RoleAttr" ColumnName="RoleAttr" />
+            <ScalarProperty Name="RoleDefine1" ColumnName="RoleDefine1" />
+            <ScalarProperty Name="RoleDefine2" ColumnName="RoleDefine2" />
+            <ScalarProperty Name="RoleDefine3" ColumnName="RoleDefine3" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="user"><EntityTypeMapping TypeName="financepersonalModel.user"><MappingFragment StoreEntitySet="user">
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+            <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+            <ScalarProperty Name="Define1" ColumnName="Define1" />
+            <ScalarProperty Name="Define2" ColumnName="Define2" />
+            <ScalarProperty Name="Define3" ColumnName="Define3" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="financepersonalModel.acount" Width="1.5" PointX="0.75" PointY="0.75" Height="1.959453125" IsExpanded="true" />
+        <EntityTypeShape EntityType="financepersonalModel.action" Width="1.5" PointX="2.75" PointY="0.75" Height="2.8025520833333326" IsExpanded="true" />
+        <EntityTypeShape EntityType="financepersonalModel.role" Width="1.5" PointX="4.75" PointY="0.75" Height="1.9594531249999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="financepersonalModel.user" Width="1.5" PointX="0.75" PointY="4.75" Height="2.1280729166666656" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
